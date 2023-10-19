@@ -6,7 +6,12 @@
         </svg>
     </button>
     <div *ngFor="let chat of [].constructor(20); index as i">
-        Message {{i+1}}
+        <div>
+            User {{i}}
+        </div>
+        <div>
+            Message {{i+1}}
+        </div>
     </div>
 </div>
     
