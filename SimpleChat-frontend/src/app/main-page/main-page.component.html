@@ -4,5 +4,11 @@
         Room {{i+1}}
     </button>
     <h3>More rooms</h3>
-    <div class="roomPage-container"></div>
+    <div class="roomPage-container">
+        <button *ngFor="let page of [].constructor(5); index as i">
+            {{i+1}}
+            <!-- Todo: make the number of pages change dynamically depending on
+            total number of rooms in backend database -->
+        </button>
+    </div>
 </div>
