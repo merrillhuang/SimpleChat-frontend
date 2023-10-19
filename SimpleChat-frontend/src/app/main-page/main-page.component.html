@@ -7,10 +7,12 @@
     </button>
     <h3>More rooms</h3>
     <div class="roomPage-container">
+        <button id="prevPage"></button>
         <button *ngFor="let page of [].constructor(5); index as i">
             {{i+1}}
             <!-- Todo: make the number of pages change dynamically depending on
             total number of rooms in backend database -->
         </button>
+        <button id="nextPage"></button>
     </div>
 </div>
