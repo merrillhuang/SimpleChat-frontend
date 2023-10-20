@@ -1,12 +1,11 @@
 <div class="container">
     <h1>Join a Room!</h1>
-    <button *ngFor="let room of [].constructor(10); index as i">
-        <a routerLink="/rooms/{{i+1}}">
-            Room {{i+1}}
-        </a>
-        <!-- Todo: make each room dynamic: display first 10 rooms in backend,
-        display each room's name dynamically -->
-    </button>
+        <button *ngFor="let room of [].constructor(rooms.people.length); index as i">
+            <a routerLink="/rooms/{{i+1}}">
+                Room {{rooms.people[i].name}}
+            </a>
+            </button>
+        <!-- </div> -->
     <h3>More rooms</h3>
     <div class="roomPage-container">
         <button id="prevPage">
