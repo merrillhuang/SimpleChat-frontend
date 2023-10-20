@@ -11,7 +11,7 @@ export class MainPageComponent implements OnInit {
 
   private rooms: any
 
-  constructor(private roomsService: RoomsService) { }
+  constructor(private roomsService: RoomsService, private http: HttpClient) { }
 
   ngOnInit(): void {
     
