@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RoomPageComponent implements OnInit {
 
   roomId: string | null = '';
+  room: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -17,6 +18,11 @@ export class RoomPageComponent implements OnInit {
     this.route.paramMap
     .subscribe(params => {
         this.roomId = params.get('id');
+        this.http.get('http://api.open-notify.org/astros.json')
+        .subscribe((response: any) => {
+          let index = parseInt(this.roomId || '');
+          this.room = response.people[index];
+        });
     });
   }
 }
