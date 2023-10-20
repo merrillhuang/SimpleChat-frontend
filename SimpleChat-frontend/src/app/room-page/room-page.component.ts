@@ -21,7 +21,7 @@ export class RoomPageComponent implements OnInit {
         this.roomId = params.get('id');
         this.http.get('http://api.open-notify.org/astros.json')
         .subscribe((response: any) => {
-          let index = parseInt(this.roomId || '');
+          let index = parseInt(this.roomId || '') - 1;
           this.room = response.people[index];
           // Todo: replace this with real data
           // chats will be set to response.find(id)'s ChatsList
