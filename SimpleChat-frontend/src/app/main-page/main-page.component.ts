@@ -13,6 +13,6 @@ export class MainPageComponent implements OnInit {
   constructor(private roomsService: RoomsService) { }
 
   ngOnInit(): void {
-    
+    this.roomsService.get();
   }
 }
