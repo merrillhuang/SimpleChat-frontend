@@ -9,11 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RoomPageComponent implements OnInit {
 
-  roomId: number;
+  roomId: string | null = '';
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    
+    this.route.paramMap
+    .subscribe(params => {
+        this.roomId = params.get('id');
+    });
   }
 }
