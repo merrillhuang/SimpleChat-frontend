@@ -7,5 +7,5 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./room-page.component.css']
 })
 export class RoomPageComponent {
-
+  constructor(private http: HttpClient) {}
 }
