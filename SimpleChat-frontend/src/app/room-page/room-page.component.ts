@@ -8,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./room-page.component.css']
 })
 export class RoomPageComponent implements OnInit {
+
+  roomId: number;
+
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
