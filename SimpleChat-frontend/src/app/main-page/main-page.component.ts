@@ -7,4 +7,5 @@ import { RoomsService } from '../services/rooms/rooms.service';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
+  constructor(private roomsService: RoomsService) { }
 }
