@@ -7,6 +7,9 @@ import { RoomsService } from '../services/rooms/rooms.service';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
+
+  private rooms: any
+
   constructor(private roomsService: RoomsService) { }
 
   ngOnInit(): void {
