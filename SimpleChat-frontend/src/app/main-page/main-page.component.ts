@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RoomsService } from '../services/rooms/rooms.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-page',
@@ -8,11 +8,15 @@ import { RoomsService } from '../services/rooms/rooms.service';
 })
 export class MainPageComponent implements OnInit {
 
-  private rooms: any
+  rooms: any
 
-  constructor(private roomsService: RoomsService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.roomsService.get();
+    this.http
+    .get('http://api.open-notify.org/astros.json')
+    .subscribe((response: any) => {
+      this.rooms = response;
+    });
   }
 }
