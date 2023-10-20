@@ -23,8 +23,10 @@ export class RoomPageComponent implements OnInit {
         .subscribe((response: any) => {
           let index = parseInt(this.roomId || '');
           this.room = response.people[index];
+          // Todo: replace this with real data
+          // chats will be set to response.find(id)'s ChatsList
           for (let i = 0; i < 10; i++) {
-            this.chats.push(i);
+            this.chats.push({user: `User ${i+1}`, message: `Message ${i+1}`});
           }
         });
     });
