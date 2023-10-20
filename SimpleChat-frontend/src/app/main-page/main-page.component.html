@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="rooms" class="container">
     <h1>Join a Room!</h1>
         <button *ngFor="let room of [].constructor(rooms.people.length); index as i">
             <a routerLink="/rooms/{{i+1}}">
