@@ -11,6 +11,7 @@ export class RoomPageComponent implements OnInit {
 
   roomId: string | null = '';
   room: any;
+  chats: any[] = [];
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -22,6 +23,9 @@ export class RoomPageComponent implements OnInit {
         .subscribe((response: any) => {
           let index = parseInt(this.roomId || '');
           this.room = response.people[index];
+          for (let i = 0; i < 10; i++) {
+            this.chats.push(i);
+          }
         });
     });
   }
