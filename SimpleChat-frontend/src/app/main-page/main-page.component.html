@@ -1,10 +1,11 @@
 <div *ngIf="currRooms" class="container">
     <h1>Join a Room!</h1>
         <button *ngFor="let room of [].constructor(currRooms.length); index as i">
-            <a routerLink="/rooms/{{i+1}}">
-                <!-- Room {{currRooms[i].name}} -->
+            <a routerLink="/rooms/{{(currPage-1)*(maxRooms)+i+1}}">
+                Room {{(currPage-1)*(maxRooms)+i+1}}
+                {{currRooms[i].name}}
             </a>
-            </button>
+        </button>
     <h3>More rooms</h3>
     <div class="roomPage-container">
         <button *ngIf="currPage > 1" (click)="prevPage()" id="prevPage">
@@ -14,8 +15,6 @@
         </button>
         <button *ngFor="let page of [].constructor(numPages); index as i" (click)="changePage(i+1)">
             {{i+1}}
-            <!-- Todo: make the number of pages change dynamically depending on
-            total number of rooms in backend database -->
         </button>
         <button *ngIf="currPage < numPages" (click)="nextPage()" id="nextPage">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
