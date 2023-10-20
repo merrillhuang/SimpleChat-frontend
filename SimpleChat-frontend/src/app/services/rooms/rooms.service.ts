@@ -7,4 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RoomsService {
   constructor(private http: HttpClient) { }
+
+  get() {
+    this.http
+    .get('http://api.open-notify.org/astros.json')
+    .subscribe((response: any) => console.log(response));
+  }
 }
