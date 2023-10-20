@@ -6,4 +6,5 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RoomsService {
+  constructor(private http: HttpClient) { }
 }
