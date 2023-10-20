@@ -1,7 +1,9 @@
 <div class="container">
     <h1>Join a Room!</h1>
     <button *ngFor="let room of [].constructor(10); index as i">
-        Room {{i+1}}
+        <a routerLink="/rooms/{{i+1}}">
+            Room {{i+1}}
+        </a>
         <!-- Todo: make each room dynamic: display first 10 rooms in backend,
         display each room's name dynamically -->
     </button>
