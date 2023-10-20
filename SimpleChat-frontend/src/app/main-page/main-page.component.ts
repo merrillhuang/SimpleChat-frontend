@@ -6,6 +6,10 @@ import { RoomsService } from '../services/rooms/rooms.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
   constructor(private roomsService: RoomsService) { }
+
+  ngOnInit(): void {
+    
+  }
 }
