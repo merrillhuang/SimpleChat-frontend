@@ -11,7 +11,7 @@ import { JwtServiceService } from '../jwt-service.service';
 export class RoomPageComponent implements OnInit {
 
   roomId: string | null = '';
-  room: any;
+  roomName: any;
   chats: any[] = [];
   users: any[] = [];
   messageField: string = '';
@@ -34,8 +34,8 @@ export class RoomPageComponent implements OnInit {
       const header: HttpHeaders = new HttpHeaders().set('Authorization', this.service.jwt);
       this.http.get(`http://localhost:8081/rooms/${this.roomId}`, {headers: header})
       .subscribe((response: any) => {
+        this.roomName = response.data.name;
         this.chats = response.data.chatList;
-        console.log(this.chats);
         this.http.get(`http://localhost:8081/rooms/${this.roomId}/chats`, {headers: header})
         .subscribe((response2: any) => {
           this.users = response2.data;
@@ -67,17 +67,5 @@ export class RoomPageComponent implements OnInit {
     this.http.put(`http://localhost:8081/rooms/${this.roomId}/chats/${chatId}`, {"message": newMessage}, {headers: header})
     .subscribe((response: any) => {
     });
-  }
-
-  checkUser(chatId: number) {
-    // console.log(chatId);
-    // let answer: boolean = false;
-    const header: HttpHeaders = new HttpHeaders().set('Authorization', this.service.jwt);
-    this.http.get(`http://localhost:8081/rooms/${this.roomId}/chats/${chatId}`, {headers: header})
-    .subscribe((response: any) => {
-      console.log(response);
-      return response;
-    });
-    // return answer;
   }
 }

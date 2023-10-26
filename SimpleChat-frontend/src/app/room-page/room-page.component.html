@@ -1,6 +1,4 @@
-<h1 *ngIf="room">{{room.name}}</h1>
-<!-- Todo: fetch name dynamically from backend based on url, find room with id from url in database
-and access its name -->
+<h1 *ngIf="roomName">{{roomName}}</h1>
 <div class="container">
     <button id="home" routerLink="/rooms">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
@@ -8,8 +6,6 @@ and access its name -->
         </svg>
     </button>
     <div *ngFor="let chat of [].constructor(chats.length); index as i">
-        <!-- Todo: fetch all of this data dynamically from database, find room with id from url
-        and load the room's messages -->
         <div>
             {{users[i]}} says: 
             {{chats[i].message}}
