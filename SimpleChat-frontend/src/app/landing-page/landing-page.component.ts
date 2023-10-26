@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { JwtServiceService } from '../jwt-service.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,13 +9,25 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class LandingPageComponent {
 
-  constructor(private http: HttpClient) {}
+  usernameField: string = '';
+
+  passwordField: string = '';
+
+  constructor(private http: HttpClient, public service: JwtServiceService) {}
+  
+  loginUser() {
+    if (this.usernameField !== '' && this.passwordField !== '') {
+      this.service.login(this.usernameField, this.passwordField);
+    }
+  }
   
   loginGuest() {
-    const header: HttpHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', 'http:localhost/4200/*');
-    this.http.post('http://localhost:8081/auth/register', {"username": "Guest", "password": "password"}, {headers: header})
-    .subscribe((response: any) => {
-      console.log(response);
-    })
+    this.service.login("Guest", "password")
+  }
+
+  registerUser() {
+    if (this.usernameField !== '' && this.passwordField !== '') {
+      this.service.registerUser(this.usernameField, this.passwordField);
+    }
   }
 }

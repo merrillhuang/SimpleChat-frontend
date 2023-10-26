@@ -2,7 +2,6 @@
     <h1>Join a Room!</h1>
         <button *ngFor="let room of [].constructor(currRooms.length); index as i">
             <a routerLink="/rooms/{{(currPage-1)*(maxRooms)+i+1}}">
-                Room {{(currPage-1)*(maxRooms)+i+1}}
                 {{currRooms[i].name}}
             </a>
         </button>

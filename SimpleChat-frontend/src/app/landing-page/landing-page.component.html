@@ -1,8 +1,8 @@
 <div class="container">
     <h1>Welcome to SimpleChat!</h1>
-    <input placeholder="Username">
-    <input placeholder="Password">
-    <button>Sign In</button>
-    <button>Sign Up</button>
-    <button (click)="loginGuest()">Continue as Guest</button>
+    <input type="text" placeholder="Username" [(ngModel)] = "usernameField">
+    <input type="text" placeholder="Password" [(ngModel)] = "passwordField">  
+    <button (click)="loginUser()" routerLink="{{service.jwt !== '' ? '/rooms': ''}}">Sign In</button>
+    <button (click)="registerUser()" routerLink="{{service.jwt !== '' ? '/rooms': ''}}">Sign Up</button>
+    <button (click)="loginGuest()" routerLink="{{service.jwt !== '' ? '/rooms': ''}}">Continue as Guest</button>
 </div>
