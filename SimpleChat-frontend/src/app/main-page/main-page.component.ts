@@ -18,28 +18,28 @@ export class MainPageComponent implements OnInit {
   constructor(private http: HttpClient, private service: JwtServiceService) { }
 
   ngOnInit(): void {
-    const header: HttpHeaders = new HttpHeaders().set('Authorization', this.service.jwt);
-    this.http
-    .get('http://localhost:8081/rooms', {headers: header})
-    .subscribe((response: any) => {
-      console.log(response);
-      this.response = response;
-      let length: number = response.data.length;
-      if (length < this.maxRooms) {
-        for (let room of response.data) {
-          this.currRooms.push(room);
-        }
-      } else {
-        for (let i = 0; i < this.maxRooms; i++) {
-          this.currRooms.push(response.data[i]);
-        }
-      }
-      if (length % this.maxRooms !== 0) {
-        this.numPages = Math.floor(length / this.maxRooms) + 1;
-      } else {
+    this.getRooms();
+    setInterval(() => {
+      this.getRooms(); 
+    }, 3000);
+  }
+
+  getRooms() {
+    if (this.service.jwt !== '') {
+      const header: HttpHeaders = new HttpHeaders().set('Authorization', this.service.jwt);
+      this.http
+      .get('http://localhost:8081/rooms', {headers: header})
+      .subscribe((response: any) => {
+        this.response = response;
+        let length: number = response.data.length;
+        if (length % this.maxRooms !== 0) {
+          this.numPages = Math.floor(length / this.maxRooms) + 1;
+        } else {
         this.numPages = length / this.maxRooms;
       }
+      this.updateRoomDisplay();
     });
+  }
   }
 
   changePage(pageNum: number) {
@@ -73,6 +73,18 @@ export class MainPageComponent implements OnInit {
         this.currRooms.push(this.response.data[i]);
       }
     }
+  }
+
+  createNewRoom() {
+    const header: HttpHeaders = new HttpHeaders().set('Authorization', this.service.jwt);
+    let roomName = prompt("New Room's name:");
+    this.http.post('http://localhost:8081/rooms', {"name": roomName}, {headers: header})
+    .subscribe((response: any) => {
+    });
+  }
+
+  signOut() {
+    this.service.jwt = '';
   }
 }
  
