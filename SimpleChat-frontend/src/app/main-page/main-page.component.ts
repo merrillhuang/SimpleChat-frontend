@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-page',
@@ -17,9 +17,11 @@ export class MainPageComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    const header: HttpHeaders = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2JteWVycyIsImlhdCI6MTY5ODI3NDY5NiwiZXhwIjoxNjk4MzYxMDk2fQ.eaR711j5v30Ay0RKc4Fgkxz1DUdoCd9sfryu88zIwGI');
     this.http
-    .get('http://api.open-notify.org/astros.json')
+    .get('localhost:8081/rooms', {headers: header})
     .subscribe((response: any) => {
+      console.log(response);
       this.response = response;
       let length: number = response.people.length;
       if (length % this.maxRooms !== 0) {
@@ -72,3 +74,11 @@ export class MainPageComponent implements OnInit {
     }
   }
 }
+function get(arg0: string, arg1: { headers: HttpHeaders; }) {
+  throw new Error('Function not implemented.');
+}
+
+function subscribe(arg0: (response: any) => void) {
+  throw new Error('Function not implemented.');
+}
+
