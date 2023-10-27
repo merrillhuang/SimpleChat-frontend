@@ -5,6 +5,7 @@
 ## Tools and Technologies
 ### Wireframe.cc - wireframes
 ### Visual Paradigm - ERD diagram
+### https://icons.getbootstrap.com/ : For icons
 ### Angular: Frontend Framework
 ### Written in Typescript
 
@@ -22,3 +23,10 @@
 
 ## Unsolved Problems
 ### First priority for future plans is to deploy the entire projec. Linking the frontend to the backend API took longer than expected, so there wasn't time to style the frontend. There was also planned functionally for interactivity on certain buttons, which I hope to add in the future. A tricky problem that is only partially solved is how to re-route the user depending on the response of a Http request. In general, I didn't have time to figure out how to properly perform async await within the Angular framework.
+
+## Helpful Links used to solve specific problems encountered during the project.
+### https://www.tektutorialshub.com/angular/angular-http-post-example/ (how to add a body to http request)
+### https://angular.io/api/common/http/HttpClient (for how to include headers in a http request)
+### https://stackoverflow.com/questions/36753819/conditionally-add-routerlink-or-other-attribute-directives-to-an-element-in-angu
+### https://www.itsolutionstuff.com/post/angular-setinterval-and-clearinterval-example-tutorialexample.html
+
